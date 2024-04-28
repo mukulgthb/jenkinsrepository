@@ -1,7 +1,6 @@
 pipeline {
     agent any
         environment {
-            dockerImage =''
             DOCKERHUB_CREDENTIALS=credentials('dockerhub_creadentials')
         stages {
             stage('Checkout') {
@@ -12,6 +11,11 @@ pipeline {
             stage('Build Docker Image') {
                 steps {
                     sh 'docker build -t optimusmukul/pythonapp:latest .'
+                }
+            }
+            stage('Docker Login') {
+                steps {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password_stdn'
                 }
             }
             stage('Docker Image Push') {
