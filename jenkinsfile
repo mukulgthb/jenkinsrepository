@@ -2,7 +2,7 @@ pipeline {
     agent any
         environment {
             dockerImage =''
-            registry = 'optimusmukul/pythonapp'
+            registry = 'optimusmukul/practicerepo'
         }   
         stages {
             stage('Checkout') {
