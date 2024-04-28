@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+        environment {
+            dockerImage =''
+            registry = 'optimusmukul/pythonapp'
+        }   
+        stages {
+            stage('Checkout') {
+                steps {
+                    checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mukulgthb/jenkinsrepository.git']])
+                }
+            }
+            stage('Build Docker Image') {
+                steps {
+                    script{
+                        dockerImage = docker.build registry
+                    }
+                }
+            }
+        }
+    }
