@@ -2,8 +2,7 @@ pipeline {
     agent any
         environment {
             dockerImage =''
-            registry = 'optimusmukul/pythonapp'
-        }   
+            DOCKERHUB_CREDENTIALS=credentials('dockerhub_creadentials')
         stages {
             stage('Checkout') {
                 steps {
@@ -12,9 +11,12 @@ pipeline {
             }
             stage('Build Docker Image') {
                 steps {
-                    script{
-                        dockerImage = docker.build registry
-                    }
+                    sh 'docker build -t optimusmukul/pythonapp:latest .'
+                }
+            }
+            stage('Docker Image Push') {
+                steps {
+                    sh 'docker push optimusmukul/pythonapp:latest'
                 }
             }
         }
