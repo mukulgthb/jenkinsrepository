@@ -1,7 +1,8 @@
 pipeline {
-    agent any
+        agent any
         environment {
             DOCKERHUB_CREDENTIALS=credentials('dockerhub_creadentials')
+            }
         stages {
             stage('Checkout') {
                 steps {
@@ -25,4 +26,3 @@ pipeline {
             }
         }
     }
-}
