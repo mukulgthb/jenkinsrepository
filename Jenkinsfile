@@ -9,7 +9,7 @@ pipeline {
                     checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mukulgthb/jenkinsrepository.git']])
                 }
             }
-            stage('Build Docker Image') {
+            stage('Build Docker Images') {
                 steps {
                     sh 'docker build -t optimusmukul/pythonapp:latest .'
                 }
