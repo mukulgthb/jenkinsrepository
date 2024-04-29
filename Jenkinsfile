@@ -26,7 +26,7 @@ pipeline {
             }
             stage('Docker Run') {
                 steps {
-                    sh 'docker run optimusmukul/pythonapp:latest'
+                    sh 'docker run optimusmukul/pythonapp:latest -d'
                 }
             }
         }
