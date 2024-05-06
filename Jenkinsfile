@@ -21,7 +21,7 @@ pipeline {
             }
             stage('Docker Image Push') {
                 steps {
-                    sh 'docker push optimusmukul/pythonapp:latest'
+                    sh 'docker push optimusmukul/pythonapp:$BUILD_NUMBER'
                 }
             }
             stage('Docker Run') {
