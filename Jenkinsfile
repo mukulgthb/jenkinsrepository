@@ -11,7 +11,7 @@ pipeline {
             }
             stage('Build Docker Image') {
                 steps {
-                    sh 'docker build -t optimusmukul/pythonapp:latest .'
+                    sh 'docker build -t optimusmukul/pythonapp:$BUILD_NUMBER .'
                 }
             }
             stage('Docker Login') {
